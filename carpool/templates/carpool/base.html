@@ -1,0 +1,149 @@
+{% load static %}
+
+<!doctype html>
+<html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Font Awesome -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    rel="stylesheet"
+    />
+    <!-- Google Fonts -->
+    <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    rel="stylesheet"
+    />
+    <!-- MDB -->
+    <link
+    href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.css"
+    rel="stylesheet"
+    />
+    <!-- CSS -->
+    <link href="{% static 'carpool/bootstrap-fs-modal.min.css' %}" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' href="{% static 'carpool/main.css' %}">
+
+    <!-- Posthog 
+    <script>
+        !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split(".");2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement("script")).type="text/javascript",p.async=!0,p.src=s.api_host+"/static/array.js",(r=t.getElementsByTagName("script")[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a="posthog",u.people=u.people||[],u.toString=function(t){var e="posthog";return"posthog"!==a&&(e+="."+a),t||(e+=" (stub)"),e},u.people.toString=function(){return u.toString(1)+".people (stub)"},o="capture identify alias people.set people.set_once set_config register register_once unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags".split(" "),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+        posthog.init('{{POSTHOG_API_KEY}}',{api_host:'{{POSTHOG_INSTANCE_ADDRESS}}'})
+    </script>
+    ---->
+
+    {% block title %}{% endblock title %}
+
+</head>
+<body>
+    <!-- Start your project here-->
+    <!--Main Navigation-->
+    <header>
+
+        <!-- Navbar -->
+        <nav style="z-index: 1; margin-top: 0;" class="navbar navbar-expand-lg navbar-light bg-light">
+        <!-- Container wrapper -->
+        <div class="container-fluid">
+            <!-- Toggle button -->
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+            data-mdb-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <i class="fas fa-bars"></i>
+            </button>
+    
+            <!-- Collapsible wrapper -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <!-- Navbar brand -->
+            <a class="navbar-brand mt-2 mt-lg-0" style="margin-left: 20px;" href="{% url 'landing-page' %}">
+                <i class="fas fa-taxi"></i>
+            </a>
+            <!-- Left links -->
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'ride-create' %}">Drivers</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'carpool-home' %}">Riders</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{% url 'support-page' %}">Support</a>
+                </li>
+            </ul>
+            <!-- Left links -->
+            </div>
+            <!-- Collapsible wrapper -->
+
+            <!-- Right elements -->
+            <div class="d-flex align-items-center">
+
+                <!-- Avatar -->
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" style="margin-right: 20px;" href="#" id="navbarDropdownMenuAvatar"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="{{ user.profile.image.url }}" class="rounded-circle" height="25"
+                            alt="Profile picture" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'my-rides' user.username %}">My Rides</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                        </li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <div class="dropdown">
+                        <a class="dropdown-toggle d-flex align-items-center hidden-arrow" style="margin-right: 20px;" href="#" id="navbarDropdownMenuAvatar"
+                        role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR82DN9JU-hbIhhkPR-AX8KiYzA4fBMVwjLAG82fz7GLg&s"
+                            class="rounded-circle" height="25" alt="Profile picture" loading="lazy" />
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuAvatar">
+                        <li>
+                            <a class="dropdown-item" href="{% url 'login' %}">Login</a>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="{% url 'register' %}">Register</a>
+                        </li>
+                        </ul>
+                    </div>
+                {% endif %}
+            </div>
+            <!-- Right elements -->
+        </div>
+        <!-- Container wrapper -->
+        </nav>
+        <!-- Navbar -->
+
+    </header>
+    <!-- End Main Navigation-->
+
+    <main role="main" class="container-fluid">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}">
+                    {{message}}
+                </div>
+            {% endfor %}
+        {% endif %}
+        
+        {% block content %}{% endblock content%}
+    </main>
+
+    <!-- End your project here-->
+
+    <!-- MDB -->
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
+    ></script>
+
+</body>
+</html>

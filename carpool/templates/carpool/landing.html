@@ -1,0 +1,202 @@
+{% extends 'carpool/base.html' %}
+
+{% block title%}
+    <title>Flex Cars | Home</title>
+{% endblock title %}
+
+{% block content %}
+
+{% comment %}
+Landing page
+https://github.com/mdbootstrap/bootstrap-5-jumbotron-template/blob/main/jumbotron-template.html
+{% endcomment %}
+
+<!--Main layout-->
+<main class="my-5">
+  <div class="container">
+    <!--Section: Content-->
+    <section>
+      <!-- Jumbotron -->
+      <div id="intro" class="p-5 text-center bg-light shadow-5 rounded mb-5">
+        <h1 class="mb-3 h2">Flex Cars</h1>
+        <p class="mb-3">Together, let's make it easy for members of the Clark community to find rides to and from campus</p>
+        <button class="btn btn-primary m-2" onclick="scrollToLearnMore()">Learn More</button>
+      </div>
+      <!-- Jumbotron -->
+    </section>
+    <!--Section: Content-->
+    <br>
+    <!--Section: Content-->
+    <section class="text-center">
+
+      <div class="row">
+        <div class="col-lg-4 col-md-12 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="https://mdbootstrap.com/img/new/standard/nature/184.jpg" class="img-fluid" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Drivers</h5>
+              <p class="card-text">
+                Post your upcoming trip details and other students can contact you for a ride
+              </p>
+              <a href="{% url 'ride-create' %}" class="btn btn-primary">Offer to drive</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="https://mdbootstrap.com/img/new/standard/nature/023.jpg" class="img-fluid" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Riders</h5>
+              <p class="card-text">
+                See when other students are leaving and find a ride that works best for you
+              </p>
+              <a href="{% url 'carpool-home' %}" class="btn btn-primary">Find a ride</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+          <div class="card">
+            <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+              <img src="https://mdbootstrap.com/img/new/standard/nature/111.jpg" class="img-fluid" />
+                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+              </a>
+            </div>
+            <div class="card-body">
+              <h5 class="card-title">Support</h5>
+              <p class="card-text">
+                Can't find what you're looking for? Have any suggestions? Contact our support team
+              </p>
+              <a href="{% url 'support-page' %}" class="btn btn-primary">Support</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </section>
+
+
+    <div class="container">
+    <div id="learn-more" class="row">
+    <div class="col-md-6 mt-4 gx-5 mb-4">
+      <p class='mt-4'><strong>How it works (as a driver):</strong></p>
+      <ul class="text-muted mb-3">
+        <li>You post a ride using the form in the Drivers page</li>
+          <li>A Google Maps display of your route is then displayed for other students to see under the Riders page</li>
+        <li>If another student needs to get somewhere along your route, they can submit a ride request, which asks them to enter their trip details</li>
+        <li>We email you the ride request, showing you a side-by-side Google Maps view of your old route and hypothetical route if you were to accept (along with how much time it would add you)</li>
+        <li>Simply accept or decline the ride request with the click of a button -- we notify the rider for you so there's no need to do anything else</li>
+      </ul>
+    </div>
+
+    <div class="col-md-6 mt-4 gx-5 mb-4">
+      <p class='mt-4'><strong>How it works (as a rider):</strong></p>
+      <ul class="text-muted mb-3">
+        <li>Navigate to the Riders page to view trip details posted by other students</li>
+        <li>Filter your search results to find rides that are leaving on a day/time when you want to leave</li>
+          <li>Find a ride going to a similar place as you (or passing through where you need to go)</li>
+        <li>Select the More Info button, where you'll have the option to send a customized message to the driver and enter your trip details</li>
+        <li>We'll pass your message along to the driver and get back to you as soon as we hear back from the driver</li>
+      </ul>
+    </div>
+    </div>
+    </div>
+
+    <br><br><br>
+
+    <section>
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6 gx-5 mb-4">
+          <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+            <img src="https://afa.colby.edu/wp-content/uploads/2022/05/Miller-fall-e1652452364851.png" class="img-fluid" />
+              <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+            </a>
+          </div>
+        </div>
+
+        <div class="col-md-6 gx-5 mb-4">
+          <h4><strong>About Us</strong></h4>
+          <p class="text-muted">
+            Flex Cars was created by Clark students who struggled
+            time and time again to find rides to and from campus.
+            We wanted to create a platform to help all members of the Clark community
+            travel to and from campus and other places seamlessly. We believe that
+            whether you're looking for a ride to Boston or just looking 
+            for people to keep you company on a long drive back to New York,Flex Cars 
+            will bring us closer as a community and 
+            ease some of the stress that many students face when making travel plans.
+          </p>
+          <p><strong>Why should I offer to drive?</strong></p>
+          <ul class="text-muted">
+            <li>It's a kind gesture, and offering to drive someone along your
+              way doesn't take much effort and helps the Clark community</li>
+            <li>Gas is expensive! You can ask your riders to split gas costs with you</li>
+            <li>Only fellow Clark students are allowed to join, and you might 
+              just become friends with someone new</li>
+            <li>Driving long distances has a major carbon footprint and by carpooling
+              you're doing your part to minimize the impact on the planet
+            </li>
+            <li>Ultimately, you're allowed to decline any ride request if you feel the ride 
+              is too far out of your way
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    </section>
+    <!--Section: Content-->
+
+<!--Main layout-->
+
+<br><br>
+
+{% comment %} <!--Footer-->
+<footer class="bg-light text-lg-start">
+
+  <hr class="m-0" />
+
+  <div class="text-center py-4 align-items-center">
+    <p>Follow MDB on social media</p>
+    <a href="https://www.youtube.com/channel/UC5CF7mLQZhvx8O5GODZAhdA" class="btn btn-primary m-1" role="button"
+      rel="nofollow" target="_blank">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://www.facebook.com/mdbootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+      target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/MDBootstrap" class="btn btn-primary m-1" role="button" rel="nofollow"
+      target="_blank">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://github.com/mdbootstrap/mdb-ui-kit" class="btn btn-primary m-1" role="button" rel="nofollow"
+      target="_blank">
+      <i class="fab fa-github"></i>
+    </a>
+  </div>
+
+</footer> {% endcomment %}
+
+<script>
+  function scrollToLearnMore() {
+    // Get the element with id="learn-more"
+    var learnMoreElement = document.getElementById("learn-more");
+    
+    // Scroll to the element using the scrollIntoView() method
+    learnMoreElement.scrollIntoView({ behavior: 'smooth' });
+  }
+  </script>
+
+</body>
+</html>
+{% endblock content %}

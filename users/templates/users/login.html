@@ -1,0 +1,32 @@
+{% extends 'carpool/base.html' %}
+{% load crispy_forms_tags %} <!-- load crispy forms styling -->
+
+{% block title%}
+    <title>Flex Cars | Login</title>
+{% endblock title %}
+
+{% block content %}
+<div class="row d-flex align-items-center">
+    <div class="col-md-4 mx-auto mt-4 border border-secondary rounded">
+        <form method="POST">
+            {% csrf_token %} <!-- django security features -->
+            <fieldset class="form-group"> <!-- fieldset creates box around content -->
+                <legend class="border-bottom text-center mb-4">Login</legend>
+                {{ form|crispy }} <!-- |crispy applies crispy forms styling to form -->
+            </fieldset>
+            <div class="form-group text-center">
+                <button class="btn btn-primary mt-3" type="submit">Log In</button>
+                <small class="text-muted mt-3">
+                    <a style="margin-left: 10px;"href="{% url 'password_reset' %}">Forgot password?</a>
+                </small>
+            </div>
+            <br>
+        </form>
+        <div class="border-top text-center pt-3 mb-1">
+            <small class="text-muted">
+                Need an account?<a style="margin-left: 10px;" href="{% url 'register' %}">Sign up here</a>
+            </small>
+        </div>
+    </div>
+</div>
+{% endblock content %} 

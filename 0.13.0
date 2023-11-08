@@ -1,0 +1,8 @@
+Requirement already satisfied: responses in g:\anaconda3\envs\carpool\lib\site-packages (0.23.3)
+Requirement already satisfied: requests<3.0,>=2.30.0 in g:\anaconda3\envs\carpool\lib\site-packages (from responses) (2.31.0)
+Requirement already satisfied: urllib3<3.0,>=1.25.10 in g:\anaconda3\envs\carpool\lib\site-packages (from responses) (1.26.14)
+Requirement already satisfied: pyyaml in g:\anaconda3\envs\carpool\lib\site-packages (from responses) (6.0)
+Requirement already satisfied: types-PyYAML in g:\anaconda3\envs\carpool\lib\site-packages (from responses) (6.0.12.12)
+Requirement already satisfied: charset-normalizer<4,>=2 in g:\anaconda3\envs\carpool\lib\site-packages (from requests<3.0,>=2.30.0->responses) (3.0.1)
+Requirement already satisfied: idna<4,>=2.5 in g:\anaconda3\envs\carpool\lib\site-packages (from requests<3.0,>=2.30.0->responses) (3.4)
+Requirement already satisfied: certifi>=2017.4.17 in g:\anaconda3\envs\carpool\lib\site-packages (from requests<3.0,>=2.30.0->responses) (2022.12.7)

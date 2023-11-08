@@ -1,0 +1,18 @@
+{% extends 'carpool/base.html' %}
+
+{% block title%}
+    <title>Flex Cars | Logout</title>
+{% endblock title %}
+
+{% block content %}
+<div class="row d-flex align-items-center">
+    <div class="col-md-4 mx-auto mt-4 text-center border border-secondary rounded">
+    <h2 class='mt-3'>You have been logged out</h2>
+    <div class="border-top pt-3">
+        <small class="text-muted mb-2">
+            <a href="{% url 'login' %}">Log back in</a>
+        </small>
+    </div>
+    </div>
+</div>
+{% endblock content %} 

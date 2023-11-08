@@ -1,0 +1,129 @@
+{% extends 'carpool/base.html' %}
+
+{% block title%}
+    <title>Flex Cars | Post Upcoming Trip Details</title>
+    <script async src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API}}&libraries=places&callback=initialize" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <script
+    type="text/javascript"
+    src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.1.0/mdb.min.js"
+    ></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+
+    <script>
+        function initialize(){
+            const input = document.getElementById("origin");
+            const input2 = document.getElementById("destination");
+            const autocomplete = new google.maps.places.Autocomplete(input);
+            const autocomplete2 = new google.maps.places.Autocomplete(input2);
+            }
+            
+    </script>
+
+    {{ form.media }}
+{% endblock title %}
+
+{% block content %}
+<section>
+    <div class="container">
+    <div id="driver-info" class="row">
+
+      <div class="col-md-6 mt-4 gx-5 mb-4">
+        <h3><strong>Help the Clark community and save on gas</strong></h3>
+        <p class='mt-4'><strong>How it works:</strong></p>
+        <ul class="text-muted mb-3">
+          <li>You post a ride using the form at the bottom of the page</li>
+            <li>A Google Maps display of your route along with the other details you provide is then displayed for other Clark students to see under the Riders page</li>
+          <li>If another student needs to get somewhere along your route, they can submit a ride request, which asks them to enter their trip details</li>
+          <li>We email you the ride request, showing you a side-by-side Google Maps view of your old route and hypothetical route if you were to accept (along with how much time it would add you)</li>
+          <li>Simply accept or decline the ride request with the click of a button -- we notify the rider for you so there's no need to do anything else</li>
+        </ul>
+        <p><strong>Why should I offer to drive?</strong></p>
+        <ul class="text-muted mb-3">
+          <li>It's a kind gesture, and offering to drive someone along your
+            way doesn't take much effort and helps the Clark community</li>
+            <li>Gas is expensive! You can ask your riders to split gas costs with you</li>
+          <li>Only fellow Clark students are allowed to join, and you might 
+            just become friends with someone new</li>
+          <li>Driving long distances has a major carbon footprint and by carpooling
+            you're doing your part to minimize the impact on the planet
+          </li>
+          <li>Ultimately, you're allowed to decline any ride request if you feel the ride 
+            is too far out of your way
+          </li>
+        </ul>
+      </div>
+
+      <div class="col-md-6 gx-5 mt-4 mb-4">
+        <div class="bg-image hover-overlay ripple shadow-2-strong" data-mdb-ripple-color="light">
+          <img src="https://afa.colby.edu/wp-content/uploads/2022/05/Miller-fall-e1652452364851.png" class="img-fluid" />
+            <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  </section>
+
+
+
+    <div class="row">
+        <div class="col-md-8 mx-auto mt-4 mb-4 border border-secondary rounded">
+            <form method="POST">
+                {% csrf_token %} <!-- django security features -->
+
+                <fieldset class="form-group">
+                    <legend class="border-bottom mt-3 mb-4" style="text-align: center;">Post your upcoming ride details:</legend>
+                    {{ form.non_field_errors }}
+                    
+                    <div class="fieldWrapper row mx-4 mb-1">
+                        {{ form.origin.errors }}
+                        <label for="{{ form.origin.id_for_label }}">Where are you leaving from?</label>
+                        {{ form.origin }}
+                    </div>
+                    
+                    <div class="fieldWrapper row mx-4 mb-1">
+                        {{ form.destination.errors }}
+                        <label for="{{ form.destination.id_for_label }}">Where are you going?</label>
+                        {{ form.destination }}
+                    </div>
+                    
+                    <div class="fieldWrapper row mx-3 mb-1">
+                        {{ form.departure_day.errors }}
+                        <label for="{{ form.departure_day.id_for_label }}">Day of departure:</label>
+                        {{ form.departure_day }}
+                    </div>
+                      
+                    <div class="fieldWrapper row mx-3 mb-1">
+                        <div class="col-md-3">
+                        {{ form.time.errors }}
+                        <label for="{{ form.time.id_for_label }}">Time of departure:</label>
+                        {{ form.time }}   
+                        </div>                                                  
+                    </div>
+
+                    <div class="fieldWrapper row mx-3 mb-1">
+                        <div class="col-md-2">
+                        {{ form.capacity.errors }}
+                        <label for="{{ form.capacity.id_for_label }}">Spots in car:</label>
+                        {{ form.capacity }}
+                        </div>
+                    </div>
+                    
+                    <div class="fieldWrapper mx-4 mb-3">
+                      {{ form.notes.errors }}
+                      <label for="{{ form.notes.id_for_label }}">Optional notes to riders:</label>
+                      {{ form.notes }}
+                    </div>
+                  </fieldset>
+                  
+                <div class="form-group">
+                    <button class="btn btn-primary mb-3 mx-4" type="submit">Post</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+{% endblock content %} 
