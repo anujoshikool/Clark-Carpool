@@ -170,7 +170,7 @@ EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_HOST_USER = 'anujoshikool@gmail.com'
-EMAIL_HOST_PASSWORD = 'orfalglzavwnvbgm'
+# EMAIL_HOST_PASSWORD = 'orfjalgltzavwnvbgm'
 
 # can check django storages documentation for more info on using AWS S3
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
