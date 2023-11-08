@@ -329,7 +329,7 @@ class RideDeclineView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         #send email to passenger
         subject = f"Clark Rideshare -- your ride request has been declined"
         message = f"Hi {ride_request.passenger.first_name},\n\nUnfortunately, {ride_request.ride.driver.first_name} {ride_request.ride.driver.last_name} will not be able to drive you to {ride_request.destination}. " \
-            f"We apologize for any inconvenience that this may cause. We encourage you to visit https://www.colbyrideshare.live/rides/ to view other rides -- " \
+            f"We apologize for any inconvenience that this may cause. We encourage you to visit https://www.clarkrideshare.live/rides/ to view other rides -- " \
             f"there is a good chance that someone else will be able to drive you. " \
             f"As always, please let us know if we can help you in any way." \
             f"\n\nBest,\nThe Clark Rideshare Team"
