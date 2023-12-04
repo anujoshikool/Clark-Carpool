@@ -2,7 +2,7 @@
 
 {% block title%}
     <title>Flex Cars | Post Upcoming Trip Details</title>
-    <script async src="https://maps.googleapis.com/maps/api/js?key={{GOOGLE_API}}&libraries=places&callback=initialize" defer></script>
+    <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDGorPQ3msilPH1SjABXCd6waoCQq2UKTA&libraries=places&callback=initialize" defer></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 
     <script
@@ -67,7 +67,43 @@
   </div>
   </section>
 
+ <!--search options-
+ <form method="post">
+  {% csrf_token %} 
 
+<section class="bmnop3" style="background-image: url(https://cdn.blablacar.com/kairos/assets/images/carpool_only_small-09eb14eafab9352951e1.svg);padding: 230px; background-repeat: no-repeat; background-size:cover; margin-bottom: 20px; ">
+  
+  <fieldset class="form-group">
+    <h1 class="bmnop3">Your pick of rides at low prices</h1>
+    {{ form.non_field_errors }}
+    <div style="display: flex; align-items: center; justify-content: center; margin-top: 20px;">
+        <div style="margin-right: 10px; display: flex; flex-direction: column;">
+            <label style="font-weight: bold; margin-bottom: 5px;" for="leaving-from">Leaving From:</label>
+            <input style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px;" type="text" id="leaving-from" name="leaving-from">
+            {{ form.origin }}
+        </div>
+
+        <div style="margin-right: 10px; display: flex; flex-direction: column;">
+            <label style="font-weight: bold; margin-bottom: 5px;" for="going-to">Going To:</label>
+            <input style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 200px;" type="text" id="going-to" name="going-to">
+        </div>
+
+        <div style="margin-right: 10px; display: flex; flex-direction: column;">
+            <label style="font-weight: bold; margin-bottom: 5px;" for="date">Date:</label>
+            <input style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100px;" type="date" id="date" name="date">
+        </div>
+
+        <div style="margin-right: 10px; display: flex; flex-direction: column;">
+            <label style="font-weight: bold; margin-bottom: 5px;" for="passengers">Number of Passengers:</label>
+            <input style="padding: 8px; border: 1px solid #ccc; border-radius: 5px; width: 100px;" type="number" id="passengers" name="passengers" min="1" value="1">
+        </div>
+
+        <button style="background-color: #007BFF; color: #fff; border: none; border-radius: 5px; padding: 10px 20px; cursor: pointer;" type="button">Post</button>
+    </div>
+  </section>
+</fieldset>
+</form>
+--->
 
     <div class="row">
         <div class="col-md-8 mx-auto mt-4 mb-4 border border-secondary rounded">
@@ -75,13 +111,14 @@
                 {% csrf_token %} <!-- django security features -->
 
                 <fieldset class="form-group">
+                    
                     <legend class="border-bottom mt-3 mb-4" style="text-align: center;">Post your upcoming ride details:</legend>
                     {{ form.non_field_errors }}
                     
                     <div class="fieldWrapper row mx-4 mb-1">
                         {{ form.origin.errors }}
-                        <label for="{{ form.origin.id_for_label }}">Where are you leaving from?</label>
-                        {{ form.origin }}
+                        <label style="font-weight: bold; margin-bottom: 5px;" for="{{ form.origin.id_for_label }}">Where are you leaving from?</label>
+                      {{ form.origin }}
                     </div>
                     
                     <div class="fieldWrapper row mx-4 mb-1">
@@ -125,5 +162,5 @@
             </form>
         </div>
     </div>
-    
+
 {% endblock content %} 

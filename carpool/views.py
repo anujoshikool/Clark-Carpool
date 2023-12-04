@@ -144,7 +144,7 @@ class RideCreateView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['GOOGLE_API'] = 'AIzaSyDGorPQ3msilPH1SjABXCd6waoCQq2UKTA'
+        #context['GOOGLE_API'] = 'AIzaSyDGorPQ3msilPH1SjABXCd6waoCQq2UKTA'
         return context
     
 #this is view where drivers update their posted rides
